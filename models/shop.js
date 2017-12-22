@@ -13,7 +13,10 @@ Shop.prototype.setUrl = function(u){
 //All action functions return promises.
 Shop.prototype.register = function(fname,lname,email,pass){
   return axios.put(`${this.baseUrl}/users/${email}?pw=${pass}`, {"fname":fname,"lname":lname})
-    .then((response) => response.data)
+    .then((response) => {
+    console.log(response.data);
+    return response.data;
+    })
     .catch((err) => console.log(err.response));
 }
 

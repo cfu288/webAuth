@@ -8,6 +8,7 @@ To run the web app:
 ```
  ./index.js [ -d|--ssl-dir SSL_DIR ] PORT WS_URL
 ```
-    * -d | --ssl-dir : Provides the path containing the SSL credential files key.pem and cert.pem. If not specified, uses same directory.
-    * PORT : Port to run service on
-    * WE_URL : The url of the authentication web service this app relies on.
+
+* -d | --ssl-dir : Provides the path containing the SSL credential files key.pem and cert.pem. If not specified, uses same directory.
+* PORT : Port to run service on
+* WE_URL : The url of the authentication web service this app relies on.

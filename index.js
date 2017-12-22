@@ -20,8 +20,6 @@ const shop = require('./models/shop');
 const STATIC_DIR = 'statics';
 const TEMPLATES_DIR = 'templates';
 
-const CART_COOKIE = 'cartId';
-
 /*************************** Route Handling ****************************/
 
 function setupRoutes(app) {
@@ -102,9 +100,9 @@ function loginHandler(app) {
         app.shop.login(q,p)
 	    .then((json) => { 
             console.log(json);
-            if(json.authToken){
+            if(json.auth_token){
                 console.log('received:' + json);
-                res.cookie('auth', json.authToken, { maxAge: 86400*1000 });
+                res.cookie('auth', json.auth_token, { maxAge: 86400*1000 });
                 res.cookie('user', q , { maxAge: 86400*1000 });
                 res.redirect('account.html'); 
             }
@@ -174,12 +172,18 @@ function registrationHandler(app) {
 	    //console.log("valid credentials");
         app.shop.register(n,n1,q,p)
 	    .then((json) => {
-            if(json.authToken !== undefined){
-                //console.log('received:' + json);
-                res.cookie('auth', json.authToken, { maxAge: 86400*1000 });
-                res.cookie('user', q , { maxAge: 86400*1000 });
-                res.redirect('account.html'); 
-            }
+            //if(json){
+                if(json.auth_token !== undefined){
+                    //console.log('received:' + json);
+                    res.cookie('auth', json.auth_token, { maxAge: 86400*1000 });
+                    res.cookie('user', q , { maxAge: 86400*1000 });
+                    res.redirect('account.html'); 
+                }
+            /*}else{
+                console.log(json);
+                errors.msg = 'Server error - Improper json';
+                res.send(doMustache(app, 'registration', errors));
+            }*/
         })
 	    .catch((err) => {
             console.error(err);
@@ -242,7 +246,7 @@ function setupTemplates(app) {
 
 function setup() {
   process.chdir(__dirname);
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0" // REMOVE LATER, used for testing with self signed cert
   const port = options.options.port;
   const sslDir = options.options.sslDir;
   const url = options.options.ws_url;
