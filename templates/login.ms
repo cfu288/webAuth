@@ -2,10 +2,13 @@
 <html>
   <head>
     <title>Login</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <h1>Login</h1>
+    <div class="tit">
+    <h1 class="title">Login</h1>
+    </div>
+    <div class="main">
     <p class="error">{{msg}}</p>
     <form method="GET" action="/login.html">
       
@@ -21,8 +24,9 @@
         {{#pError}}<span class="error">{{pError}}<br></span>{{/pError}}
       </label>
     
-    <input name="submit" type="submit" value="Login" class="control">
+    <input name="submit" type="submit" value="Login" class="controlButton">
     </form>
+    </div>
     {{>footer}}
   </body>
 </html>
