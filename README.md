@@ -1,6 +1,6 @@
 ## Simple Authentication Web App 
 
-This is a simple web app which allows a user to register for and log into their account. It currently generates HTML on the server using Mustache templating.
+This is a simple web app which allows a user to register for a new account and log into their account to access personal data. It currently generates HTML on the server using Mustache templating.
 
 This service relies on an authentication web service which should be already running elsewhere. My implemementation of this auth web service can be found [here](https://github.com/cfu288/AuthWS).
 
