@@ -11,6 +11,6 @@ To run the web app:
 
 * -d | --ssl-dir : Provides the path containing the SSL credential files key.pem and cert.pem. If not specified, uses same directory.
 * PORT : Port to run service on
-* WE_URL : The url of the authentication web service this app relies on.
+* WS_URL : The url of the authentication web service this app relies on.
 
 NOTE: Backend service currently automatically times out auth tokens after set time without telling client. Can cause the account page to return error. Timeout on client needs to be implemented.
